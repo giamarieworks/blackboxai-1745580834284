@@ -1,0 +1,60 @@
+/*
+Theme Name: GYNTEKBUSINESS
+Theme URI: https://gyntekbusiness.center
+Author: BLACKBOXAI
+Author URI: https://gyntekbusiness.center
+Description: A modern WordPress theme for GYNTEKBUSINESS marketing agency featuring AI-powered services
+Version: 1.0
+License: GNU General Public License v2 or later
+License URI: http://www.gnu.org/licenses/gpl-2.0.html
+Text Domain: gyntekbusiness
+*/
+
+/* Base Theme Styles */
+:root {
+    --primary-color: #fa56ce;
+    --secondary-color: #0e1413;
+    --accent-color: #fafa15;
+    --text-color: #0e1413;
+    --light-gray: #e4e5e6;
+    --medium-gray: #b7baba;
+    --white: #ffffff;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    color: var(--text-color);
+    line-height: 1.6;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 700;
+}
+
+/* Custom Button Styles */
+.btn-primary {
+    background-color: var(--primary-color);
+    color: var(--white);
+    padding: 12px 30px;
+    border-radius: 4px;
+    transition: all 0.3s ease;
+}
+
+.btn-primary:hover {
+    background-color: var(--secondary-color);
+    transform: translateY(-2px);
+}
+
+/* Header Styles */
+.site-header {
+    background: var(--white);
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+/* Footer Styles */
+.site-footer {
+    background: var(--secondary-color);
+    color: var(--white);
+    padding: 60px 0;
+}
