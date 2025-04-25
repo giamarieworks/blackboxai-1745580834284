@@ -1,0 +1,569 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GYNTEKBUSINESS - AI-Powered Marketing Agency</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        white: '#FFFFFF',
+                        yellow: '#FEFE15',
+                        pink: '#FF56CE',
+                        'light-pink': '#FF9EE2',
+                        'gradient-pink': '#FF56CE',
+                        black: '#000000',
+                        'dark-gray': '#666666',
+                        'medium-gray': '#999999',
+                        'light-gray': '#CCCCCC',
+                        primary: '#FF56CE',
+                        secondary: '#000000',
+                        accent: '#FEFE15'
+                    },
+                    fontFamily: {
+                        sans: ['Space Grotesk', 'sans-serif'],
+                        heading: ['Playfair Display', 'serif']
+                    },
+                    boxShadow: {
+                        'custom': '0 4px 6px -1px rgba(250, 86, 206, 0.1), 0 2px 4px -1px rgba(250, 86, 206, 0.06)',
+                        'custom-lg': '0 10px 15px -3px rgba(250, 86, 206, 0.1), 0 4px 6px -2px rgba(250, 86, 206, 0.05)'
+                    },
+                    animation: {
+                        'fade-in': 'fadeIn 0.5s ease-out',
+                        'slide-up': 'slideUp 0.5s ease-out'
+                    },
+                    keyframes: {
+                        fadeIn: {
+                            '0%': { opacity: '0' },
+                            '100%': { opacity: '1' }
+                        },
+                        slideUp: {
+                            '0%': { transform: 'translateY(20px)', opacity: '0' },
+                            '100%': { transform: 'translateY(0)', opacity: '1' }
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #f1f5f9;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #fa56ce;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #0e1413;
+        }
+
+        /* Smooth Scroll */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* Button Hover Effects */
+        .btn-hover {
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+        .btn-hover:after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 100%;
+            top: 0;
+            left: 0;
+            background: rgba(255,255,255,0.2);
+            transition: all 0.3s ease;
+        }
+        .btn-hover:hover:after {
+            width: 100%;
+        }
+
+        /* Card Hover Effects */
+        .card-hover {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .card-hover:hover {
+            transform: translateY(-5px);
+        }
+        /* Base Styles */
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f8fafc;
+        }
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Poppins', sans-serif;
+        }
+
+        /* Section Animations */
+        .section-animate {
+            opacity: 0;
+            transform: translateY(20px);
+            animation: slideUp 0.5s ease-out forwards;
+        }
+
+        /* Stagger child animations */
+        .stagger-animate > * {
+            opacity: 0;
+            animation: fadeIn 0.5s ease-out forwards;
+        }
+        .stagger-animate > *:nth-child(1) { animation-delay: 0.1s; }
+        .stagger-animate > *:nth-child(2) { animation-delay: 0.2s; }
+        .stagger-animate > *:nth-child(3) { animation-delay: 0.3s; }
+        .stagger-animate > *:nth-child(4) { animation-delay: 0.4s; }
+    </style>
+</head>
+<body class="bg-gray-50 overflow-x-hidden">
+    <!-- Header -->
+    <header class="bg-white shadow-custom fixed w-full top-0 z-50">
+        <div class="container mx-auto px-4">
+            <div class="flex items-center justify-between py-4">
+                <div class="flex items-center animate-fade-in">
+                    <a href="/" class="flex items-center">
+                        <svg class="h-10 w-10 mr-3" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M20 0L40 20L20 40L0 20L20 0Z" fill="#FF56CE"/>
+                            <path d="M20 10L30 20L20 30L10 20L20 10Z" fill="#FEFE15"/>
+                        </svg>
+                        <div>
+                            <span class="text-xl font-bold text-black font-heading">
+                                GYNTEKBUSINESS
+                            </span>
+                            <span class="block text-sm text-dark-gray font-sans">
+                                AI Marketing & Automation
+                            </span>
+                        </div>
+                    </a>
+                </div>
+                <nav class="hidden md:flex items-center space-x-8 stagger-animate">
+                    <a href="#services" class="text-gray-600 hover:text-primary transition-colors">Services</a>
+                    <a href="#about" class="text-gray-600 hover:text-primary transition-colors">About</a>
+                    <a href="#pricing" class="text-gray-600 hover:text-primary transition-colors">Pricing</a>
+                    <a href="#contact" class="text-gray-600 hover:text-primary transition-colors">Contact</a>
+                    <a href="tel:+17205380518" class="flex items-center text-gray-600 hover:text-primary transition-colors">
+                        <i class="fas fa-phone-alt mr-2"></i>
+                        (720) 538-0518
+                    </a>
+                    <a href="mailto:levelup@gyntekbusiness.center" class="bg-primary text-white px-6 py-2 rounded-full btn-hover">
+                        Get Started
+                    </a>
+                </nav>
+                <button class="md:hidden text-gray-600 hover:text-primary transition-colors">
+                    <i class="fas fa-bars text-2xl"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Add margin-top to account for fixed header -->
+    <div class="mt-20"></div>
+
+    <!-- Hero Section -->
+    <section class="relative bg-gradient-to-r from-black via-pink to-yellow text-white py-24 overflow-hidden">
+        <div class="absolute inset-0 bg-[url('data:image/svg+xml,%3Csvg width=\"60\" height=\"60\" viewBox=\"0 0 60 60\" xmlns=\"http://www.w3.org/2000/svg\"%3E%3Cg fill=\"none\" fill-rule=\"evenodd\"%3E%3Cg fill=\"%23ffffff\" fill-opacity=\"0.05\"%3E%3Cpath d=\"M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z\"/%3E%3C/g%3E%3C/g%3E%3C/svg%3E')] opacity-20"></div>
+        <div class="container mx-auto px-4 relative">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                <div class="section-animate">
+                    <h1 class="font-heading text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight">
+                        Transform Your Business<br>
+                        <span class="text-yellow">with AI-Powered Solutions</span>
+                    </h1>
+                    <p class="font-sans text-xl mb-8 text-white/90">
+                        GYNTEKBUSINESS identifies specific problems, frustrations, and unmet needs that our clients face everyday. We deliver custom AI solutions that drive growth and efficiency.
+                    </p>
+                    <div class="flex flex-wrap gap-4 stagger-animate">
+                        <a href="#services" class="bg-yellow text-black px-8 py-3 rounded-full shadow-custom btn-hover group">
+                            <span class="flex items-center font-bold">
+                                Explore Services
+                                <i class="fas fa-arrow-right ml-2 transform group-hover:translate-x-1 transition-transform"></i>
+                            </span>
+                        </a>
+                        <a href="#contact" class="bg-white/10 backdrop-blur-sm border-2 border-white/30 px-8 py-3 rounded-full btn-hover hover:bg-white/20 transition-all">
+                            <span class="flex items-center">
+                                Get Started
+                                <i class="fas fa-chevron-right ml-2"></i>
+                            </span>
+                        </a>
+                    </div>
+                </div>
+                <div class="hidden lg:block animate-fade-in">
+                    <div class="relative">
+                        <div class="absolute -inset-4 bg-yellow/20 rounded-full blur-xl"></div>
+                        <img src="https://gyntekbusiness.center/wp-content/uploads/sites/5/2019/08/01.png" 
+                             alt="GYNTEKBUSINESS AI Solutions" 
+                             class="w-full relative z-10 transform hover:scale-105 transition-transform duration-500">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="py-20 section-animate">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16">
+                <span class="inline-block text-primary font-semibold mb-2">Our Services</span>
+                <h2 class="text-3xl md:text-4xl font-bold mb-4">AI-Powered Solutions</h2>
+                <p class="text-xl text-gray-600 max-w-2xl mx-auto">
+                    Comprehensive solutions designed to transform your business through advanced AI technology and strategic implementation.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 stagger-animate">
+                <!-- Business Planning -->
+                <div class="card-hover bg-white p-8 rounded-lg shadow-custom group">
+                    <div class="text-primary text-4xl mb-6 transform group-hover:scale-110 transition-transform">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-4 group-hover:text-primary transition-colors">Business Planning</h3>
+                    <p class="text-gray-600 mb-6">Tailored strategies to align with client goals and drive sustainable growth.</p>
+                    <a href="#contact" class="inline-flex items-center text-primary group-hover:text-secondary transition-colors">
+                        Learn More
+                        <i class="fas fa-arrow-right ml-2 transform group-hover:translate-x-1 transition-transform"></i>
+                    </a>
+                </div>
+
+                <!-- Market Research -->
+                <div class="card-hover bg-white p-8 rounded-lg shadow-custom group">
+                    <div class="text-primary text-4xl mb-6 transform group-hover:scale-110 transition-transform">
+                        <i class="fas fa-search"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-4 group-hover:text-primary transition-colors">Market Research</h3>
+                    <p class="text-gray-600 mb-6">Data-driven insights to inform decision-making and competitive analysis.</p>
+                    <a href="#contact" class="inline-flex items-center text-primary group-hover:text-secondary transition-colors">
+                        Learn More
+                        <i class="fas fa-arrow-right ml-2 transform group-hover:translate-x-1 transition-transform"></i>
+                    </a>
+                </div>
+
+                <!-- Marketing Planning -->
+                <div class="card-hover bg-white p-8 rounded-lg shadow-custom group">
+                    <div class="text-primary text-4xl mb-6 transform group-hover:scale-110 transition-transform">
+                        <i class="fas fa-bullhorn"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-4 group-hover:text-primary transition-colors">Marketing Planning</h3>
+                    <p class="text-gray-600 mb-6">Strategic campaigns designed to maximize ROI and market presence.</p>
+                    <a href="#contact" class="inline-flex items-center text-primary group-hover:text-secondary transition-colors">
+                        Learn More
+                        <i class="fas fa-arrow-right ml-2 transform group-hover:translate-x-1 transition-transform"></i>
+                    </a>
+                </div>
+            </div>
+
+            <div class="text-center mt-12">
+                <a href="#contact" class="inline-flex items-center bg-primary text-white px-8 py-3 rounded-full shadow-custom btn-hover">
+                    <span class="flex items-center">
+                        View All Services
+                        <i class="fas fa-arrow-right ml-2"></i>
+                    </span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing Section -->
+    <section id="pricing" class="py-20 bg-gray-50 section-animate">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16">
+                <span class="inline-block text-primary font-semibold mb-2">Pricing Plans</span>
+                <h2 class="text-3xl md:text-4xl font-bold mb-4">Choose Your Growth Path</h2>
+                <p class="text-xl text-gray-600 max-w-2xl mx-auto">
+                    Select the perfect plan that aligns with your business goals and scale your success with our AI-powered solutions.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 stagger-animate">
+                <!-- Dare the Dream -->
+                <div class="card-hover bg-white rounded-lg shadow-custom p-8 group">
+                    <div class="relative mb-8">
+                        <h3 class="text-2xl font-bold mb-2 group-hover:text-primary transition-colors">Dare the Dream</h3>
+                        <div class="flex items-baseline">
+                            <span class="text-4xl font-bold">$297</span>
+                            <span class="text-gray-600 ml-2">setup</span>
+                        </div>
+                        <p class="text-gray-600">+$99/month</p>
+                    </div>
+                    <ul class="space-y-4 mb-8">
+                        <li class="flex items-center text-gray-700">
+                            <i class="fas fa-check-circle text-primary mr-3"></i>
+                            Basic AI Integration
+                        </li>
+                        <li class="flex items-center text-gray-700">
+                            <i class="fas fa-check-circle text-primary mr-3"></i>
+                            Essential Automation
+                        </li>
+                        <li class="flex items-center text-gray-700">
+                            <i class="fas fa-check-circle text-primary mr-3"></i>
+                            Standard Support
+                        </li>
+                    </ul>
+                    <a href="#contact" class="block text-center bg-primary text-white px-6 py-3 rounded-full btn-hover group-hover:shadow-lg transition-all">
+                        Get Started
+                    </a>
+                </div>
+
+                <!-- Pathways -->
+                <div class="card-hover bg-white rounded-lg shadow-custom p-8 group">
+                    <div class="relative mb-8">
+                        <h3 class="text-2xl font-bold mb-2 group-hover:text-primary transition-colors">Pathways</h3>
+                        <div class="flex items-baseline">
+                            <span class="text-4xl font-bold">$1,497</span>
+                            <span class="text-gray-600 ml-2">setup</span>
+                        </div>
+                        <p class="text-gray-600">+$297/month</p>
+                    </div>
+                    <ul class="space-y-4 mb-8">
+                        <li class="flex items-center text-gray-700">
+                            <i class="fas fa-check-circle text-primary mr-3"></i>
+                            Advanced AI Tools
+                        </li>
+                        <li class="flex items-center text-gray-700">
+                            <i class="fas fa-check-circle text-primary mr-3"></i>
+                            Custom Automation
+                        </li>
+                        <li class="flex items-center text-gray-700">
+                            <i class="fas fa-check-circle text-primary mr-3"></i>
+                            Priority Support
+                        </li>
+                    </ul>
+                    <a href="#contact" class="block text-center bg-primary text-white px-6 py-3 rounded-full btn-hover group-hover:shadow-lg transition-all">
+                        Get Started
+                    </a>
+                </div>
+
+                <!-- Boss Earner -->
+                <div class="card-hover bg-white rounded-lg shadow-custom-lg p-8 transform scale-105 border-2 border-primary relative group">
+                    <div class="absolute -top-4 left-1/2 transform -translate-x-1/2 bg-primary text-white px-6 py-1 rounded-full text-sm font-semibold">
+                        Most Popular
+                    </div>
+                    <div class="relative mb-8">
+                        <h3 class="text-2xl font-bold mb-2 group-hover:text-primary transition-colors">Boss Earner</h3>
+                        <div class="flex items-baseline">
+                            <span class="text-4xl font-bold">$2,197</span>
+                            <span class="text-gray-600 ml-2">setup</span>
+                        </div>
+                        <p class="text-gray-600">+$497/month</p>
+                    </div>
+                    <ul class="space-y-4 mb-8">
+                        <li class="flex items-center text-gray-700">
+                            <i class="fas fa-check-circle text-primary mr-3"></i>
+                            Enterprise AI Suite
+                        </li>
+                        <li class="flex items-center text-gray-700">
+                            <i class="fas fa-check-circle text-primary mr-3"></i>
+                            Full Automation
+                        </li>
+                        <li class="flex items-center text-gray-700">
+                            <i class="fas fa-check-circle text-primary mr-3"></i>
+                            24/7 Premium Support
+                        </li>
+                    </ul>
+                    <a href="#contact" class="block text-center bg-primary text-white px-6 py-3 rounded-full btn-hover group-hover:shadow-lg transition-all">
+                        Get Started
+                    </a>
+                </div>
+
+                <!-- Dividends Stacker -->
+                <div class="card-hover bg-white rounded-lg shadow-custom p-8 group">
+                    <div class="relative mb-8">
+                        <h3 class="text-2xl font-bold mb-2 group-hover:text-primary transition-colors">Dividends Stacker</h3>
+                        <div class="flex items-baseline">
+                            <span class="text-4xl font-bold">$3,497</span>
+                            <span class="text-gray-600 ml-2">setup</span>
+                        </div>
+                        <p class="text-gray-600">+$697/month</p>
+                    </div>
+                    <ul class="space-y-4 mb-8">
+                        <li class="flex items-center text-gray-700">
+                            <i class="fas fa-check-circle text-primary mr-3"></i>
+                            Custom AI Development
+                        </li>
+                        <li class="flex items-center text-gray-700">
+                            <i class="fas fa-check-circle text-primary mr-3"></i>
+                            Advanced Integration
+                        </li>
+                        <li class="flex items-center text-gray-700">
+                            <i class="fas fa-check-circle text-primary mr-3"></i>
+                            Dedicated Support Team
+                        </li>
+                    </ul>
+                    <a href="#contact" class="block text-center bg-primary text-white px-6 py-3 rounded-full btn-hover group-hover:shadow-lg transition-all">
+                        Get Started
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-20">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4">Get in Touch</h2>
+                <p class="text-xl text-gray-600">Ready to transform your business with AI-powered solutions?</p>
+            </div>
+
+            <div class="max-w-4xl mx-auto">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+                    <div>
+                        <h3 class="text-2xl font-bold mb-6">Contact Information</h3>
+                        <div class="space-y-6">
+                            <div class="flex items-start">
+                                <i class="fas fa-phone-alt text-primary text-xl mt-1 mr-4"></i>
+                                <div>
+                                    <h4 class="font-bold mb-1">Phone</h4>
+                                    <p class="text-gray-600">(720) 538-0518</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start">
+                                <i class="fas fa-envelope text-primary text-xl mt-1 mr-4"></i>
+                                <div>
+                                    <h4 class="font-bold mb-1">Email</h4>
+                                    <p class="text-gray-600">levelup@gyntekbusiness.center</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="bg-white rounded-lg shadow-lg p-8">
+                        <form>
+                            <div class="mb-6">
+                                <label class="block text-gray-700 font-bold mb-2" for="name">Name</label>
+                                <input type="text" id="name" class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:border-primary" required>
+                            </div>
+                            <div class="mb-6">
+                                <label class="block text-gray-700 font-bold mb-2" for="email">Email</label>
+                                <input type="email" id="email" class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:border-primary" required>
+                            </div>
+                            <div class="mb-6">
+                                <label class="block text-gray-700 font-bold mb-2" for="message">Message</label>
+                                <textarea id="message" rows="4" class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:border-primary" required></textarea>
+                            </div>
+                            <button type="submit" class="w-full bg-primary text-white px-6 py-3 rounded-full hover:bg-secondary transition-colors">
+                                Send Message
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-secondary text-white py-16">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
+                <div>
+                    <h3 class="text-2xl font-bold mb-6">GYNTEKBUSINESS, LTD</h3>
+                    <p class="text-gray-400 mb-6">
+                        AI-powered, human-assisted business automation solutions for sustainable growth and success.
+                    </p>
+                    <address class="text-gray-400 not-italic mb-6">
+                        2000 S Colorado Blvd<br>
+                        Bldg 1-2000 #1139<br>
+                        Denver, CO 80222
+                    </address>
+                    <div class="space-y-2 mb-6">
+                        <p class="text-gray-400">Toll-free: <a href="tel:+18443106177" class="hover:text-primary transition-colors">+1 (844) 310-6177</a></p>
+                        <p class="text-gray-400">Main: <a href="tel:+17205380518" class="hover:text-primary transition-colors">+1 (720) 538-0518</a></p>
+                    </div>
+                    <div class="flex space-x-4">
+                        <a href="https://facebook.com/gyntekbizcenter" target="_blank" rel="noopener" class="text-gray-400 hover:text-primary transition-colors">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="https://linkedin.com/company/gyntekbizcenter" target="_blank" rel="noopener" class="text-gray-400 hover:text-primary transition-colors">
+                            <i class="fab fa-linkedin-in"></i>
+                        </a>
+                        <a href="https://instagram.com/gyntekbizcenter" target="_blank" rel="noopener" class="text-gray-400 hover:text-primary transition-colors">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="https://x.com/gyntekbizcenter" target="_blank" rel="noopener" class="text-gray-400 hover:text-primary transition-colors">
+                            <i class="fab fa-x-twitter"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div>
+                    <h4 class="text-lg font-bold mb-6">Contact</h4>
+                    <ul class="space-y-4">
+                        <li>
+                            <a href="mailto:levelup@gyntekbusiness.center" class="text-gray-400 hover:text-primary transition-colors flex items-center">
+                                <i class="fas fa-envelope mr-2"></i>
+                                Sales
+                            </a>
+                        </li>
+                        <li>
+                            <a href="mailto:cservices@gyntekbusiness.center" class="text-gray-400 hover:text-primary transition-colors flex items-center">
+                                <i class="fas fa-headset mr-2"></i>
+                                Client Services
+                            </a>
+                        </li>
+                        <li>
+                            <a href="mailto:billing@gyntekbusiness.center" class="text-gray-400 hover:text-primary transition-colors flex items-center">
+                                <i class="fas fa-credit-card mr-2"></i>
+                                Billing
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="text-lg font-bold mb-6">Legal</h4>
+                    <ul class="space-y-4">
+                        <li>
+                            <a href="https://gyntekbusiness.center/policies/terms-of-service" class="text-gray-400 hover:text-primary transition-colors">
+                                Terms of Service
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://gyntekbusiness.center/policies/privacy" class="text-gray-400 hover:text-primary transition-colors">
+                                Privacy Policy
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://gyntekbusiness.center/policies/GDPR" class="text-gray-400 hover:text-primary transition-colors">
+                                GDPR Compliance
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="text-lg font-bold mb-6">Newsletter</h4>
+                    <p class="text-gray-400 mb-4">Subscribe to our newsletter for updates and insights.</p>
+                    <form class="space-y-4" id="newsletter-form">
+                        <div class="relative">
+                            <input type="email" 
+                                   placeholder="Your email" 
+                                   class="w-full px-4 py-2 rounded-lg bg-gray-700 text-white border-none focus:outline-none focus:ring-2 focus:ring-primary"
+                                   required>
+                            <div class="text-xs text-gray-400 mt-2">
+                                By subscribing, you agree to our Privacy Policy and GDPR compliance terms.
+                            </div>
+                        </div>
+                        <button type="submit" class="w-full bg-primary text-white px-6 py-2 rounded-lg hover:bg-white hover:text-primary transition-colors btn-hover">
+                            Subscribe
+                        </button>
+                    </form>
+                </div>
+            </div>
+
+            <div class="border-t border-gray-700 mt-12 pt-8 text-center text-gray-400">
+                <p>&copy; 2024 GYNTEKBUSINESS, LTD. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
